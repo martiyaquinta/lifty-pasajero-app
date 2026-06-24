@@ -190,6 +190,7 @@ function SupportScreen({ nav }) {
         <button onClick={() => nav('profile')} style={{ background:'none', border:'none', color:'#0D1F2D', fontSize:22, cursor:'pointer', padding:'4px 8px 4px 0' }}>←</button>
         <span style={{ fontSize:16, fontWeight:600, color:'#0D1F2D' }}>Soporte</span>
       </div>
+      <div style={{ background:'#fff', padding:'0 20px 12px' }}>
         <div style={{ display:'flex', alignItems:'center', gap:10, background:'#F4F7FA', borderRadius:12, padding:'0 14px', height:46 }}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" strokeWidth="2" strokeLinecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
           <input placeholder="Buscar ayuda..." style={{ flex:1, border:'none', background:'transparent', outline:'none', fontSize:14, fontFamily:'Inter,sans-serif', color:'#0D1F2D' }}/>

@@ -1,0 +1,208 @@
+<!-- @dsCard group="Pasajero App" viewport="390x844" name="Lifty Pasajero" subtitle="Interactive passenger app prototype — full flow from login to trip completion" -->
+<!-- @startingPoint section="Pasajero App" subtitle="Full passenger ride-hailing flow for Lifty" viewport="390x844" -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lifty — App Pasajero</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="./OnboardingScreens.jsx"></script>
+<script type="text/babel" src="./HomeScreens.jsx"></script>
+<script type="text/babel" src="./TripScreens.jsx"></script>
+<script type="text/babel" src="./OtherScreens.jsx"></script>
+<script type="text/babel" src="./ExtraScreens.jsx"></script>
+<script type="text/babel" src="./ErrorScreens.jsx"></script>
+<style>
+  @keyframes lifty-spin { to { transform: rotate(360deg); } }
+  @keyframes pulse-ring { 0%,100%{transform:scale(1);opacity:.5} 50%{transform:scale(1.4);opacity:0} }
+  @keyframes slide-up { from{transform:translateY(40px);opacity:0} to{transform:translateY(0);opacity:1} }
+  @keyframes fade-in  { from{opacity:0} to{opacity:1} }
+  @keyframes bounce-in { 0%{transform:scale(.6);opacity:0} 70%{transform:scale(1.1)} 100%{transform:scale(1);opacity:1} }
+  @keyframes car-move { 0%,100%{transform:translate(-6px,-2px)} 50%{transform:translate(6px,2px)} }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body { margin:0; background:#1a1a2e; display:flex; justify-content:center; align-items:center; min-height:100vh; font-family:'Inter',system-ui,sans-serif; }
+  .stage { width:390px; height:844px; position:relative; overflow:hidden; border-radius:44px; box-shadow:0 32px 80px rgba(0,0,0,.5); flex-shrink:0; }
+  .screen { position:absolute; inset:0; display:flex; flex-direction:column; overflow:hidden; }
+  @media (max-width:430px) { body{background:#0D1F2D;align-items:flex-start} .stage{border-radius:0;width:100vw;height:100dvh;box-shadow:none;} }
+</style>
+</head>
+<body>
+<div class="stage" id="app"></div>
+<script type="text/babel">
+// ── Shared helpers ──────────────────────────────────────────────────────────
+function Btn({ children, variant='primary', full=true, destructive=false, sm=false, onClick, style }) {
+  return (
+    <button onClick={onClick} style={{
+      width: full ? '100%' : 'auto',
+      height: sm ? 44 : 56,
+      borderRadius: 9999,
+      border: variant==='outline' ? `1.5px solid ${destructive?'#FF4D4D':'#DDDDDD'}` : 'none',
+      background: variant==='primary' ? (destructive?'#FF4D4D':'#00C2B3') : variant==='dark' ? '#0D1F2D' : variant==='outline' ? 'transparent' : '#F4F7FA',
+      color: variant==='outline' ? (destructive?'#FF4D4D':'#555') : '#fff',
+      fontFamily:'Inter,sans-serif', fontWeight:700, fontSize: sm?13:15,
+      letterSpacing:'0.10em', textTransform:'uppercase',
+      cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', gap:8,
+      boxShadow: variant==='primary' && !destructive ? '0 4px 16px rgba(0,194,179,.28)' : 'none',
+      flexShrink:0, ...style
+    }}>{children}</button>
+  );
+}
+
+function SBar({ dark=true }) {
+  const fg = dark ? '#fff' : '#0D1F2D';
+  const bg = dark ? '#0D1F2D' : '#fff';
+  return (
+    <div style={{height:44,background:bg,display:'flex',alignItems:'center',justifyContent:'space-between',padding:'0 20px',flexShrink:0}}>
+      <span style={{fontSize:15,fontWeight:600,color:fg}}>9:41</span>
+      <div style={{display:'flex',alignItems:'center',gap:5}}>
+        <svg width="16" height="11" viewBox="0 0 16 11"><rect x="0" y="6" width="3" height="5" rx="1" fill={fg}/><rect x="4" y="4" width="3" height="7" rx="1" fill={fg}/><rect x="8" y="2" width="3" height="9" rx="1" fill={fg}/><rect x="12" y="0" width="3" height="11" rx="1" fill={fg} fillOpacity=".4"/></svg>
+        <svg width="24" height="11" viewBox="0 0 24 11"><rect x=".5" y=".5" width="20" height="10" rx="2.5" stroke={fg} strokeOpacity=".35" fill="none"/><rect x="2" y="2" width="14" height="7" rx="1.5" fill={fg}/><path d="M22 3.5v4a2 2 0 000-4z" fill={fg} fillOpacity=".4"/></svg>
+      </div>
+    </div>
+  );
+}
+
+function MapBG({ children }) {
+  return (
+    <div style={{flex:1,background:'linear-gradient(135deg,#152D4A,#1E3A5F)',position:'relative',overflow:'hidden'}}>
+      {/* Roads */}
+      <div style={{position:'absolute',top:'45%',left:0,right:0,height:6,background:'#3A7AC4',opacity:.5}}/>
+      <div style={{position:'absolute',top:0,bottom:0,left:'35%',width:5,background:'#3A7AC4',opacity:.4}}/>
+      <div style={{position:'absolute',top:'25%',left:0,right:0,height:3,background:'#3A7AC4',opacity:.25,transform:'rotate(-8deg)'}}/>
+      <div style={{position:'absolute',top:0,bottom:0,left:'65%',width:3,background:'#3A7AC4',opacity:.25}}/>
+      {/* Route line */}
+      <div style={{position:'absolute',top:'30%',left:'20%',right:'25%',height:3,background:'#00C2B3',opacity:.8,borderRadius:2}}/>
+      {/* Origin pin */}
+      <div style={{position:'absolute',top:'40%',left:'33%',width:24,height:24,borderRadius:'50%',background:'rgba(0,194,179,.25)',animation:'pulse-ring 2s ease-in-out infinite'}}/>
+      <div style={{position:'absolute',top:'43%',left:'36%',width:10,height:10,borderRadius:'50%',background:'#00C2B3'}}/>
+      {/* Dest pin */}
+      <div style={{position:'absolute',top:'27%',left:'68%',width:12,height:12,borderRadius:'50%',background:'#F5A623',boxShadow:'0 2px 8px rgba(245,166,35,.5)'}}/>
+      {children}
+    </div>
+  );
+}
+
+function Handle() {
+  return <div style={{width:36,height:4,borderRadius:2,background:'#DDDDDD',margin:'8px auto 0'}}></div>;
+}
+
+function Row({ children, style }) {
+  return <div style={{display:'flex',alignItems:'center',...style}}>{children}</div>;
+}
+
+function Divider() {
+  return <div style={{height:1,background:'#EEEEEE',margin:'4px 0'}}></div>;
+}
+
+// ── Splash screen ───────────────────────────────────────────────────────────
+function SplashScreen({ nav }) {
+  React.useEffect(() => {
+    const t = setTimeout(() => nav('login'), 2500);
+    return () => clearTimeout(t);
+  }, []);
+  return (
+    <div style={{ flex:1, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', background:'#0D1F2D', position:'relative', overflow:'hidden' }}>
+      {/* Logo */}
+      <div style={{ marginBottom:16, animation:'bounce-in 800ms ease' }}>
+        <img src="../../assets/logo.png" alt="Lifty" style={{ width:160, height:'auto' }} />
+      </div>
+      {/* Tagline */}
+      <div style={{ fontSize:14, color:'#8899AA', fontFamily:'Inter,sans-serif', animation:'fade-in 400ms ease 600ms both' }}>
+        Movilidad que <span style={{ color:'#00C2B3', fontWeight:600 }}>te eleva.</span>
+      </div>
+      {/* City skyline + road */}
+      <div style={{ position:'absolute', bottom:0, left:0, right:0, animation:'slide-up 600ms ease 500ms both' }}>
+        {/* Skyline silhouette */}
+        <svg viewBox="0 0 390 120" preserveAspectRatio="none" style={{ width:'100%', height:100, display:'block' }}>
+          <path d="M0 120 L0 60 L25 60 L25 40 L35 40 L35 60 L50 60 L50 25 L65 25 L65 60 L80 60 L80 45 L95 45 L95 60 L110 60 L110 15 L130 15 L130 60 L145 60 L145 35 L160 35 L160 60 L175 60 L175 50 L190 50 L190 60 L210 60 L210 30 L225 30 L225 60 L240 60 L240 20 L260 20 L260 60 L275 60 L275 40 L290 40 L290 60 L305 60 L305 55 L320 55 L320 60 L340 60 L340 35 L360 35 L360 60 L375 60 L375 50 L390 50 L390 120 Z" fill="#15273A"/>
+        </svg>
+        {/* Road with center line */}
+        <div style={{ height:20, background:'#1A2F45', position:'relative' }}>
+          <div style={{ position:'absolute', top:'50%', left:0, right:0, height:2, background:'#00C2B3', opacity:0.3, borderTop:'1px dashed #00C2B3' }}/>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── App shell ───────────────────────────────────────────────────────────────
+function App() {
+  const [screen, setScreen] = React.useState('splash');
+  const nav = (s) => setScreen(s);
+
+  const screenMap = {
+    splash:          <SplashScreen nav={nav} />,
+    login:           <window.LoginScreen nav={nav} />,
+    verify:          <window.VerifyScreen nav={nav} />,
+    register:        <window.RegisterScreen nav={nav} />,
+    permissions:     <window.PermissionsScreen nav={nav} />,
+    home:            <window.HomeScreen nav={nav} />,
+    search:          <window.SearchScreen nav={nav} />,
+    vehicle:         <window.VehicleScreen nav={nav} />,
+    confirm:         <window.ConfirmScreen nav={nav} />,
+    searching:       <window.SearchingScreen nav={nav} />,
+    assigned:        <window.AssignedScreen nav={nav} />,
+    inprogress:      <window.InProgressScreen nav={nav} />,
+    reminder:        <window.ReminderScreen nav={nav} />,
+    finished:        <window.FinishedScreen nav={nav} />,
+    cancel:          <window.CancelScreen nav={nav} />,
+    cancelled:       <window.CancelledScreen nav={nav} />,
+    profile:         <window.ProfileScreen nav={nav} />,
+    payment:         <window.PaymentScreen nav={nav} />,
+    addresses:       <window.AddressesScreen nav={nav} />,
+    noconnection:    <window.NoConnectionScreen nav={nav} />,
+    trips:           <window.TripsHistoryScreen nav={nav} />,
+    tripdetail:      <window.TripDetailScreen nav={nav} />,
+    receipt:         <window.ReceiptScreen nav={nav} />,
+    support:         <window.SupportScreen nav={nav} />,
+    chat:            <window.ChatScreen nav={nav} />,
+    lostitem:        <window.LostItemScreen nav={nav} />,
+    tripforother:    <window.TripForOtherScreen nav={nav} />,
+    badrating:       <window.BadRatingScreen nav={nav} />,
+    nodrivers:       <window.NoDriversScreen nav={nav} />,
+    drivercancelled: <window.DriverCancelledScreen nav={nav} />,
+    gpsoff:          <window.GPSOffScreen nav={nav} />,
+    outofcoverage:   <window.OutOfCoverageScreen nav={nav} />,
+    pendingpayment:  <window.PendingPaymentScreen nav={nav} />,
+  };
+
+  return (
+    <div className="screen" style={{animation:'fade-in 200ms ease'}}>
+      {screenMap[screen] || screenMap['home']}
+    </div>
+  );
+}
+
+// ── Inline TabBar (no DS bundle dependency) ─────────────────────────────
+function BottomTabBar({ active, onNavigate }) {
+  const tabs = [
+    { id:'inicio',  label:'Inicio',    path:'M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z M9 21V12h6v9' },
+    { id:'viajes',  label:'Mis Viajes', path:'M12 22c5 0 9-4 9-9S17 4 12 4 3 8 3 13s4 9 9 9z M12 8v5l3 3' },
+    { id:'perfil',  label:'Perfil',     path:'M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2 M12 11a4 4 0 100-8 4 4 0 000 8z' },
+  ];
+  return (
+    <nav style={{display:'flex',alignItems:'flex-start',justifyContent:'space-around',background:'#fff',borderTop:'1px solid rgba(13,31,45,.06)',paddingTop:8,paddingBottom:16,paddingLeft:8,paddingRight:8,height:64,boxSizing:'border-box',flexShrink:0}}>
+      {tabs.map(t => {
+        const isActive = active === t.id;
+        return (
+          <button key={t.id} onClick={() => onNavigate && onNavigate(t.id)} style={{display:'flex',flexDirection:'column',alignItems:'center',gap:3,padding:'4px 12px',border:'none',background:'transparent',cursor:'pointer',color:isActive?'#00C2B3':'#BBBBBB',minWidth:60}}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={t.path}/></svg>
+            <span style={{fontSize:11,fontWeight:isActive?600:400,lineHeight:1,fontFamily:'Inter,sans-serif'}}>{t.label}</span>
+          </button>
+        );
+      })}
+    </nav>
+  );
+}
+
+// Export shared helpers to window for use in other files
+Object.assign(window, { Btn, SBar, MapBG, Handle, Row, Divider, BottomTabBar });
+
+ReactDOM.createRoot(document.getElementById('app')).render(<App />);
+</script>
+</body>
+</html>

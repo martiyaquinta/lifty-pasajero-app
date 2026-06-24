@@ -1,0 +1,28 @@
+<!-- @dsCard group="Colors" viewport="700x120" name="Semantic Colors" subtitle="Status, feedback and accent colors — error, success, warning, orange" -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font-sans); background: #fff; display: flex; flex-direction: column; height: 120px; }
+  .row { display: flex; flex: 1; }
+  .swatch { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; padding: 6px 10px; }
+  .label { font-size: 10px; font-weight: 600; }
+  .hex   { font-size: 9px; opacity: 0.65; margin-top: 1px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="swatch" style="background:#FF4D4D"><span class="label" style="color:#fff">Error</span><span class="hex" style="color:#fcc">#FF4D4D</span></div>
+    <div class="swatch" style="background:#FF6B6B"><span class="label" style="color:#fff">Error Alt</span><span class="hex" style="color:#fcc">#FF6B6B</span></div>
+    <div class="swatch" style="background:#FFEEEE"><span class="label" style="color:#FF4D4D">Error BG</span><span class="hex" style="color:#FF4D4D">#FFEEEE</span></div>
+    <div class="swatch" style="background:#4CAF50"><span class="label" style="color:#fff">Success</span><span class="hex" style="color:#c8ffc8">#4CAF50</span></div>
+    <div class="swatch" style="background:#2E7D32"><span class="label" style="color:#fff">Success Dk</span><span class="hex" style="color:#c8ffc8">#2E7D32</span></div>
+    <div class="swatch" style="background:#E8F5E9"><span class="label" style="color:#2E7D32">Success BG</span><span class="hex" style="color:#2E7D32">#E8F5E9</span></div>
+    <div class="swatch" style="background:#F5A623"><span class="label" style="color:#fff">Warning/Dest</span><span class="hex" style="color:#fff7">#F5A623</span></div>
+    <div class="swatch" style="background:#FFF3E0"><span class="label" style="color:#B07A20">Warning BG</span><span class="hex" style="color:#B07A20">#FFF3E0</span></div>
+    <div class="swatch" style="background:#EDE7F6"><span class="label" style="color:#555">Info BG</span><span class="hex" style="color:#888">#EDE7F6</span></div>
+  </div>
+</body>
+</html>

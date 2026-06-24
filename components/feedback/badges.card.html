@@ -1,0 +1,48 @@
+<!-- @dsCard group="Components" viewport="700x200" name="Badge & Status" subtitle="Pills for ride status, price tags, service labels and trip states" -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body { margin: 0; font-family: var(--font-sans); background: #F4F7FA; padding: 20px; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 14px; }
+  .label { font-size: 10px; font-weight: 600; color: #888; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { Badge } = window.LiftyDesignSystem_00f0c3;
+function Demo() {
+  return (
+    <div>
+      <div className="label">Status — con dot</div>
+      <div className="row">
+        <Badge variant="brand" dot>3 conductores cerca</Badge>
+        <Badge variant="success" dot>Viaje en curso</Badge>
+        <Badge variant="error" dot>Sin conexión</Badge>
+        <Badge variant="warning" dot>Alta demanda</Badge>
+        <Badge variant="info" dot>Verificando pago</Badge>
+      </div>
+      <div className="label">Etiquetas — sm / md / lg</div>
+      <div className="row">
+        <Badge variant="solid" size="sm">Más barato</Badge>
+        <Badge variant="default">Próximamente</Badge>
+        <Badge variant="dark" size="lg">$2.000</Badge>
+        <Badge variant="navy">Efectivo</Badge>
+        <Badge variant="success">Cancelación sin costo</Badge>
+        <Badge variant="error">Conductor canceló</Badge>
+        <Badge variant="warning">2-4 min</Badge>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body>
+</html>

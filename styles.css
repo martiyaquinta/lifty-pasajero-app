@@ -1,0 +1,10 @@
+/* Lifty Design System — Global CSS Entry Point */
+/* Import order: fonts → tokens → components base */
+
+@import "./tokens/fonts.css";
+@import "./tokens/colors.css";
+@import "./tokens/typography.css";
+@import "./tokens/spacing.css";
+@import "./tokens/radii.css";
+@import "./tokens/shadows.css";
+@import "./tokens/motion.css";

@@ -1,0 +1,100 @@
+/* Lifty — Typography Tokens */
+
+:root {
+  /* ── Font Families ────────────────────────────── */
+  --font-sans:   'Inter', system-ui, -apple-system, sans-serif;
+
+  /* ── Font Weights ─────────────────────────────── */
+  --font-weight-regular: 400;
+  --font-weight-medium:  500;
+  --font-weight-semibold:600;
+  --font-weight-bold:    700;
+  --font-weight-extrabold:800;
+
+  /* ── Font Sizes (px) ──────────────────────────── */
+  --font-size-xs:   10px;
+  --font-size-sm:   12px;
+  --font-size-base: 14px;
+  --font-size-md:   15px;
+  --font-size-lg:   16px;
+  --font-size-xl:   18px;
+  --font-size-2xl:  20px;
+  --font-size-3xl:  24px;
+  --font-size-4xl:  28px;
+  --font-size-5xl:  32px;
+  --font-size-6xl:  36px;
+  --font-size-hero: 42px;
+
+  /* ── Line Heights ─────────────────────────────── */
+  --line-height-tight:  1.2;
+  --line-height-snug:   1.35;
+  --line-height-normal: 1.5;
+  --line-height-relaxed:1.65;
+
+  /* ── Letter Spacing ───────────────────────────── */
+  --letter-spacing-tight:  -0.02em;
+  --letter-spacing-normal:  0em;
+  --letter-spacing-wide:    0.04em;
+  --letter-spacing-wider:   0.08em;
+  --letter-spacing-caps:    0.12em;
+
+  /* ── Semantic Type Roles ──────────────────────── */
+
+  /* Display / Hero */
+  --text-display-font:    var(--font-sans);
+  --text-display-size:    var(--font-size-hero);
+  --text-display-weight:  var(--font-weight-bold);
+  --text-display-lh:      var(--line-height-tight);
+
+  /* Heading Large */
+  --text-h1-size:         var(--font-size-6xl);
+  --text-h1-weight:       var(--font-weight-bold);
+  --text-h1-lh:           var(--line-height-tight);
+
+  /* Heading Medium */
+  --text-h2-size:         var(--font-size-5xl);
+  --text-h2-weight:       var(--font-weight-bold);
+
+  /* Heading Small */
+  --text-h3-size:         var(--font-size-4xl);
+  --text-h3-weight:       var(--font-weight-bold);
+
+  /* Section Heading */
+  --text-h4-size:         var(--font-size-xl);
+  --text-h4-weight:       var(--font-weight-semibold);
+
+  /* Card Title */
+  --text-h5-size:         var(--font-size-lg);
+  --text-h5-weight:       var(--font-weight-semibold);
+
+  /* Body */
+  --text-body-size:       var(--font-size-base);
+  --text-body-weight:     var(--font-weight-regular);
+  --text-body-lh:         var(--line-height-normal);
+
+  /* Body Medium */
+  --text-body-md-size:    var(--font-size-md);
+  --text-body-md-weight:  var(--font-weight-regular);
+
+  /* Label / UI */
+  --text-label-size:      var(--font-size-base);
+  --text-label-weight:    var(--font-weight-medium);
+
+  /* Caption */
+  --text-caption-size:    var(--font-size-sm);
+  --text-caption-weight:  var(--font-weight-regular);
+
+  /* Micro */
+  --text-micro-size:      var(--font-size-xs);
+  --text-micro-weight:    var(--font-weight-medium);
+
+  /* Button */
+  --text-btn-size:        var(--font-size-md);
+  --text-btn-weight:      var(--font-weight-semibold);
+  --text-btn-ls:          var(--letter-spacing-caps);
+
+  /* CTA Large */
+  --text-cta-size:        var(--font-size-md);
+  --text-cta-weight:      var(--font-weight-bold);
+  --text-cta-ls:          var(--letter-spacing-caps);
+}

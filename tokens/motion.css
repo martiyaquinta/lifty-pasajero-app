@@ -1,0 +1,24 @@
+/* Lifty — Motion / Animation Tokens */
+
+:root {
+  /* ── Duration ─────────────────────────────────── */
+  --duration-instant:  80ms;   /* @kind other */
+  --duration-fast:     150ms;  /* @kind other */
+  --duration-normal:   250ms;  /* @kind other */
+  --duration-slow:     350ms;  /* @kind other */
+  --duration-slower:   500ms;  /* @kind other */
+
+  /* ── Easing ───────────────────────────────────── */
+  --ease-default:      cubic-bezier(0.4, 0, 0.2, 1);  /* @kind other */
+  --ease-in:           cubic-bezier(0.4, 0, 1, 1);    /* @kind other */
+  --ease-out:          cubic-bezier(0, 0, 0.2, 1);    /* @kind other */
+  --ease-spring:       cubic-bezier(0.34, 1.56, 0.64, 1); /* @kind other */
+
+  /* ── Semantic transitions ─────────────────────── */
+  --transition-color:    color var(--duration-fast) var(--ease-default),
+                         background-color var(--duration-fast) var(--ease-default);
+  --transition-press:    transform var(--duration-instant) var(--ease-out),
+                         opacity var(--duration-instant) var(--ease-out);
+  --transition-sheet:    transform var(--duration-slow) var(--ease-spring);
+  --transition-fade:     opacity var(--duration-normal) var(--ease-default);
+}

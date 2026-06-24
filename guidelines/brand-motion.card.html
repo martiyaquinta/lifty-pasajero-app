@@ -1,0 +1,55 @@
+<!-- @dsCard group="Brand" viewport="700x180" name="Motion & States" subtitle="Button press, loading spinner, pulse pin, bounce-in celebration" -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  @keyframes lifty-spin  { to{ transform:rotate(360deg); } }
+  @keyframes pulse-ring  { 0%,100%{transform:scale(1);opacity:.5} 50%{transform:scale(1.5);opacity:0} }
+  @keyframes bounce-in   { 0%{transform:scale(.5);opacity:0} 70%{transform:scale(1.12)} 100%{transform:scale(1);opacity:1} }
+  @keyframes slide-up    { from{transform:translateY(20px);opacity:0} to{transform:translateY(0);opacity:1} }
+  body { margin:0; font-family:var(--font-sans); background:#F4F7FA; display:flex; align-items:center; gap:20px; padding:20px 24px; height:180px; box-sizing:border-box; }
+  .item { display:flex; flex-direction:column; align-items:center; gap:10px; }
+  .label { font-size:10px; font-weight:600; color:#888; letter-spacing:.07em; text-transform:uppercase; text-align:center; }
+  .btn { height:44px; border-radius:9999px; background:#00C2B3; color:#fff; font-weight:700; font-size:13px; letter-spacing:.09em; text-transform:uppercase; border:none; padding:0 18px; display:flex; align-items:center; gap:8px; }
+  .spinner { width:16px; height:16px; border:2.5px solid rgba(255,255,255,.3); border-top-color:#fff; border-radius:50%; animation:lifty-spin 0.7s linear infinite; }
+  .pin-wrap { position:relative; width:32px; height:32px; }
+  .pin-ring { position:absolute; inset:0; border-radius:50%; background:rgba(0,194,179,.3); animation:pulse-ring 1.6s ease-in-out infinite; }
+  .pin-dot { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:12px; height:12px; border-radius:50%; background:#00C2B3; }
+  .cel { font-size:32px; animation:bounce-in 800ms ease forwards; }
+  .slide { font-size:13px; color:#0D1F2D; font-weight:500; animation:slide-up 400ms ease forwards; }
+</style>
+</head>
+<body>
+  <div class="item">
+    <div class="btn" style="opacity:.85;transform:scale(.97)">PEDIR VIAJE</div>
+    <div class="label">Press state</div>
+  </div>
+  <div class="item">
+    <div class="btn"><div class="spinner"></div>Buscando...</div>
+    <div class="label">Loading CTA</div>
+  </div>
+  <div class="item">
+    <div class="pin-wrap"><div class="pin-ring"></div><div class="pin-dot"></div></div>
+    <div class="label">Pulse pin</div>
+  </div>
+  <div class="item">
+    <div class="cel">🎉</div>
+    <div class="label">Bounce-in</div>
+  </div>
+  <div class="item">
+    <div class="slide">¡Llegaste!</div>
+    <div class="label">Slide-up text</div>
+  </div>
+  <div class="item" style="gap:4px">
+    <div style="font-size:10px;color:#555;font-weight:500">spring(0.34, 1.56, 0.64, 1)</div>
+    <div style="font-size:10px;color:#888">Sheet entrance · 350ms</div>
+    <div style="font-size:10px;color:#555;font-weight:500;margin-top:6px">ease(0.4, 0, 0.2, 1)</div>
+    <div style="font-size:10px;color:#888">Color · 150ms</div>
+    <div style="font-size:10px;color:#555;font-weight:500;margin-top:6px">linear</div>
+    <div style="font-size:10px;color:#888">Spinner · 700ms</div>
+    <div class="label" style="margin-top:8px">Easing reference</div>
+  </div>
+</body>
+</html>

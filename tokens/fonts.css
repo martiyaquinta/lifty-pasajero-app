@@ -1,0 +1,9 @@
+/* Lifty — Webfonts
+   Primary typeface: Inter (Google Fonts substitute).
+   Wordmark typeface: Nunito (rounded, friendly, used for "Lifty" brand name only).
+   ⚠️  FLAG: The original .pen file uses Inter throughout. We load it from
+   Google Fonts CDN. If the team has a licensed Inter variable font file,
+   replace the @import below with local @font-face rules pointing to the
+   .woff2 files placed in assets/fonts/. */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap');

@@ -1,0 +1,22 @@
+/* Lifty — Border Radius Tokens */
+
+:root {
+  --radius-none:    0px;
+  --radius-xs:      4px;   /* Micro chips, tiny tags             */
+  --radius-sm:      8px;   /* Small chips, badges, tags          */
+  --radius-md:      12px;  /* Inputs, secondary buttons          */
+  --radius-lg:      16px;  /* Cards, bottom sheet top corners    */
+  --radius-xl:      20px;  /* Large cards, modals                */
+  --radius-2xl:     24px;  /* Bottom sheets                      */
+  --radius-full:    9999px;/* Pills, avatars, CTA buttons        */
+
+  /* Semantic aliases */
+  --radius-button:  var(--radius-full);   /* Main CTA = pill shape */
+  --radius-input:   var(--radius-md);
+  --radius-card:    var(--radius-lg);
+  --radius-sheet:   var(--radius-2xl);    /* top-left + top-right  */
+  --radius-chip:    var(--radius-sm);
+  --radius-badge:   var(--radius-xs);
+  --radius-avatar:  var(--radius-full);
+  --radius-modal:   var(--radius-xl);
+}

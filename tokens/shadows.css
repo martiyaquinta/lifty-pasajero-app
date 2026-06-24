@@ -1,0 +1,32 @@
+/* Lifty — Shadow / Elevation Tokens */
+
+:root {
+  /* ── Elevation scale ──────────────────────────── */
+  --shadow-none:   none;
+
+  /* Subtle — for cards on white */
+  --shadow-sm:     0 1px 3px rgba(13, 31, 45, 0.08),
+                   0 1px 2px rgba(13, 31, 45, 0.06);
+
+  /* Default — cards, chips, inputs */
+  --shadow-md:     0 4px 12px rgba(13, 31, 45, 0.10),
+                   0 1px 4px  rgba(13, 31, 45, 0.06);
+
+  /* Raised — bottom sheets, floating search bar */
+  --shadow-lg:     0 8px 24px rgba(13, 31, 45, 0.12),
+                   0 2px 8px  rgba(13, 31, 45, 0.08);
+
+  /* Modal / overlay */
+  --shadow-xl:     0 16px 48px rgba(13, 31, 45, 0.18),
+                   0 4px 16px  rgba(13, 31, 45, 0.10);
+
+  /* Brand glow — brand-teal CTA pressed state */
+  --shadow-brand:  0 4px 20px rgba(0, 194, 179, 0.35);
+
+  /* Semantic aliases */
+  --shadow-card:       var(--shadow-md);
+  --shadow-sheet:      var(--shadow-xl);
+  --shadow-searchbar:  var(--shadow-lg);
+  --shadow-tab:        0 -1px 0 rgba(13, 31, 45, 0.06);
+  --shadow-cta:        0 4px 16px rgba(0, 194, 179, 0.30);
+}

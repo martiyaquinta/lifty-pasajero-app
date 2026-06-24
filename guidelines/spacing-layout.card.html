@@ -1,0 +1,45 @@
+<!-- @dsCard group="Spacing" viewport="700x200" name="Screen Layout" subtitle="24px horizontal padding, 44px status bar, 56px header, 64px tab bar" -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font-sans); background: #F4F7FA; display: flex; justify-content: center; padding: 20px; }
+  .phone { width: 180px; height: 160px; background: #fff; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 16px rgba(13,31,45,0.12); position: relative; }
+  .status { height: 22px; background: #0D1F2D; flex-shrink: 0; display: flex; align-items: center; padding: 0 8px; }
+  .status span { color: #fff; font-size: 8px; }
+  .header { height: 28px; background: #fff; flex-shrink: 0; border-bottom: 1px solid #E4E9EE; display: flex; align-items: center; padding: 0 8px; }
+  .header span { font-size: 9px; font-weight: 600; color: #0D1F2D; }
+  .content { flex: 1; background: #F4F7FA; position: relative; }
+  .tab { height: 32px; background: #fff; flex-shrink: 0; border-top: 1px solid #E4E9EE; display: flex; align-items: center; justify-content: space-around; }
+  .tab-item { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+  .dot { width: 12px; height: 3px; border-radius: 2px; }
+  .tab-label { font-size: 7px; }
+  .annotation { margin-left: 24px; display: flex; flex-direction: column; gap: 4px; justify-content: center; }
+  .ann { display: flex; align-items: center; gap: 8px; font-size: 11px; color: #555; }
+  .ann-bar { width: 24px; height: 3px; border-radius: 1px; }
+  .ann-val { font-weight: 600; color: #0D1F2D; min-width: 40px; }
+</style>
+</head>
+<body>
+  <div class="phone">
+    <div class="status"><span>9:41</span></div>
+    <div class="header"><span>← Confirmar y pagar</span></div>
+    <div class="content"></div>
+    <div class="tab">
+      <div class="tab-item"><div class="dot" style="background:#00C2B3"></div><span class="tab-label" style="color:#00C2B3">Inicio</span></div>
+      <div class="tab-item"><div class="dot" style="background:#BBB"></div><span class="tab-label" style="color:#BBB">Viajes</span></div>
+      <div class="tab-item"><div class="dot" style="background:#BBB"></div><span class="tab-label" style="color:#BBB">Perfil</span></div>
+    </div>
+  </div>
+  <div class="annotation">
+    <div class="ann"><div class="ann-bar" style="background:#0D1F2D"></div><span class="ann-val">44px</span> Status bar</div>
+    <div class="ann"><div class="ann-bar" style="background:#555"></div><span class="ann-val">56px</span> Header</div>
+    <div class="ann"><div class="ann-bar" style="background:#F4F7FA;border:1px solid #DDD"></div><span class="ann-val">flex 1</span> Content</div>
+    <div class="ann"><div class="ann-bar" style="background:#fff;border:1px solid #DDD"></div><span class="ann-val">64px</span> Tab bar</div>
+    <div class="ann"><div class="ann-bar" style="background:#E4E9EE"></div><span class="ann-val">24px</span> H padding</div>
+    <div class="ann"><div class="ann-bar" style="background:#00C2B3"></div><span class="ann-val">48px+</span> Touch target</div>
+  </div>
+</body>
+</html>

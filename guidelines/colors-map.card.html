@@ -1,0 +1,35 @@
+<!-- @dsCard group="Colors" viewport="700x120" name="Map Palette" subtitle="Colors used in the in-app map — background gradient, roads, pins" -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font-sans); height: 120px; display: flex; }
+  .map { flex: 2; background: linear-gradient(135deg, #152D4A, #1E3A5F); position: relative; overflow: hidden; }
+  .road-h { position: absolute; top: 50%; left: 0; right: 0; height: 4px; background: #3A7AC4; opacity: 0.6; transform: translateY(-50%); }
+  .road-v { position: absolute; left: 40%; top: 0; bottom: 0; width: 4px; background: #3A7AC4; opacity: 0.6; }
+  .route  { position: absolute; top: 30%; left: 20%; right: 20%; height: 3px; background: #00C2B3; opacity: 0.8; border-radius: 2px; }
+  .pin-o  { position: absolute; top: 35%; left: 37%; width: 18px; height: 18px; background: rgba(0,194,179,0.3); border-radius: 50%; }
+  .pin-i  { position: absolute; top: 40%; left: 41%; width: 8px; height: 8px; background: #00C2B3; border-radius: 50%; }
+  .pin-d  { position: absolute; top: 27%; left: 55%; width: 10px; height: 10px; background: #F5A623; border-radius: 50%; }
+  .swatches { flex: 3; display: flex; }
+  .swatch { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; padding: 8px 10px; }
+  .label { font-size: 10px; font-weight: 600; }
+  .hex   { font-size: 9px; opacity: 0.65; margin-top: 1px; }
+</style>
+</head>
+<body>
+  <div class="map">
+    <div class="road-h"></div><div class="road-v"></div>
+    <div class="route"></div><div class="pin-o"></div><div class="pin-i"></div><div class="pin-d"></div>
+  </div>
+  <div class="swatches">
+    <div class="swatch" style="background:#152D4A"><span class="label" style="color:#fff">Map Start</span><span class="hex" style="color:#8899AA">#152D4A</span></div>
+    <div class="swatch" style="background:#1E3A5F"><span class="label" style="color:#fff">Map End</span><span class="hex" style="color:#8899AA">#1E3A5F</span></div>
+    <div class="swatch" style="background:#3A7AC4"><span class="label" style="color:#fff">Road</span><span class="hex" style="color:#c4dcf0">#3A7AC4</span></div>
+    <div class="swatch" style="background:#00C2B3"><span class="label" style="color:#fff">Origin Pin</span><span class="hex" style="color:#fff">#00C2B3</span></div>
+    <div class="swatch" style="background:#F5A623"><span class="label" style="color:#fff">Dest Pin</span><span class="hex" style="color:#fff">#F5A623</span></div>
+  </div>
+</body>
+</html>

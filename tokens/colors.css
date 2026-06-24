@@ -1,0 +1,95 @@
+/* Lifty — Color Tokens */
+
+:root {
+  /* ── Brand Core ───────────────────────────────── */
+  --color-brand-teal:       #00C2B3;   /* Primary CTA, active icons, pins */
+  --color-brand-teal-light: #E8F8F6;   /* Teal tint backgrounds            */
+  --color-brand-teal-dim:   rgba(0, 194, 179, 0.13); /* Pressed/overlay   */
+
+  --color-brand-navy:       #0D1F2D;   /* Dark screen bg, primary text     */
+  --color-brand-navy-mid:   #0D2B45;   /* Dark card backgrounds            */
+  --color-brand-navy-2:     #1A2F45;   /* Input bg on dark screens         */
+  --color-brand-navy-3:     #1E3A5F;   /* Map area bg                      */
+  --color-brand-navy-4:     #2D5F8F;   /* Road secondary on map            */
+
+  /* ── Accent ───────────────────────────────────── */
+  --color-accent-orange:    #F5A623;   /* Destination pin, highlights      */
+  --color-accent-orange-bg: #FFF8E8;   /* Orange tint bg                   */
+  --color-accent-orange-dim:#F5A62322; /* Orange overlay                   */
+
+  /* ── Map palette ──────────────────────────────── */
+  --color-map-bg-start:     #152D4A;
+  --color-map-bg-end:       #1E3A5F;
+  --color-map-road:         #3A7AC4;
+
+  /* ── Neutral ──────────────────────────────────── */
+  --color-neutral-0:        #FFFFFF;
+  --color-neutral-50:       #F4F7FA;
+  --color-neutral-100:      #E4E9EE;
+  --color-neutral-200:      #DDDDDD;
+  --color-neutral-300:      #BBBBBB;
+  --color-neutral-400:      #AAAAAA;
+  --color-neutral-500:      #888888;
+  --color-neutral-600:      #666666;
+  --color-neutral-700:      #555555;
+  --color-neutral-800:      #444444;
+  --color-neutral-900:      #333333;
+
+  /* ── On-dark muted text ───────────────────────── */
+  --color-on-dark-secondary:#8899AA;
+  --color-on-dark-tertiary: #556677;
+
+  /* ── Semantic Status ──────────────────────────── */
+  --color-success:          #4CAF50;
+  --color-success-dark:     #2E7D32;
+  --color-success-bg:       #E8F5E9;
+
+  --color-error:            #FF4D4D;
+  --color-error-alt:        #FF6B6B;
+  --color-error-bg:         #FFEEEE;
+
+  --color-warning:          #F5A623;
+  --color-warning-bg:       #FFF3E0;
+
+  --color-info-bg:          #EDE7F6;
+
+  /* ── Semantic Surfaces ────────────────────────── */
+  --surface-base:           var(--color-neutral-0);
+  --surface-raised:         var(--color-neutral-0);
+  --surface-subtle:         var(--color-neutral-50);
+  --surface-muted:          var(--color-neutral-100);
+  --surface-dark:           var(--color-brand-navy);
+  --surface-dark-card:      var(--color-brand-navy-mid);
+  --surface-dark-input:     var(--color-brand-navy-2);
+
+  /* ── Semantic Text ────────────────────────────── */
+  --text-primary:           var(--color-brand-navy);
+  --text-secondary:         var(--color-neutral-700);
+  --text-tertiary:          var(--color-neutral-500);
+  --text-disabled:          var(--color-neutral-400);
+  --text-inverse:           var(--color-neutral-0);
+  --text-on-dark-secondary: var(--color-on-dark-secondary);
+  --text-on-dark-tertiary:  var(--color-on-dark-tertiary);
+  --text-brand:             var(--color-brand-teal);
+  --text-accent:            var(--color-accent-orange);
+  --text-error:             var(--color-error);
+  --text-success:           var(--color-success-dark);
+
+  /* ── Semantic Interactive ─────────────────────── */
+  --interactive-primary:    var(--color-brand-teal);
+  --interactive-primary-fg: var(--color-neutral-0);
+  --interactive-secondary:  var(--color-neutral-50);
+  --interactive-secondary-fg: var(--color-brand-navy);
+  --interactive-ghost-fg:   var(--color-brand-teal);
+  --interactive-destructive:#FF4D4D;
+
+  /* ── Borders ─────────────────────────────────── */
+  --border-subtle:          var(--color-neutral-200);
+  --border-default:         var(--color-neutral-300);
+  --border-strong:          var(--color-neutral-400);
+  --border-brand:           var(--color-brand-teal);
+
+  /* ── Tab Bar ─────────────────────────────────── */
+  --tab-active:             var(--color-brand-teal);
+  --tab-inactive:           var(--color-neutral-300);
+}
